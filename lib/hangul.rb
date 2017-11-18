@@ -65,7 +65,7 @@ module Hangul
 
   BLENDS = {
     revised: {},
-    mccune_reischauer: { "si" => "shi", "sy" => "shy" }
+    mccune_reischauer: { "si" => "shi", "sy" => "shy", "swi" => "shwi" }
   }
 
   def self.matrices
