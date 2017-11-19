@@ -2,7 +2,7 @@
 # http://gernot-katzers-spice-pages.com/var/korean_hangul_unicode.html
 
 module Hangul
-  def self.romanize(text, system=:mccune_reischauer)
+  def self.romanize(text, system=:revised)
     matrix = matrices[system]
     vowels = VOWELS[system]
 
@@ -158,11 +158,11 @@ h        k   kk   nn  t   tt   nn   nm   p   pp   hs  hss  h   ch  ch   tch   tk
 mccune_reischauer:
 t\l      g   gg   n   d   dd   r    m    b   bb   s   ss   _   j     jj    ch    k    t    p    h    final
 initial  k   kk   n   t   tt   r    m    p   pp   s   ss   _   ch    tch   ch'   k'   t'   p'   h    _
-voiced   g   gg   n   d   dd   r    m    b   bb   s   ss   _   j     jj    ch'   k'   t'   p'   h    _
+voiced   g   kk   n   d   dd   r    m    b   bb   s   ss   _   j     jj    ch'   k'   t'   p'   h    _
 g        kk  kk   ngn kt  ktt  ngn  ngm  kp  kpp  ks  kss  g   kj    ktch  kch'  kk'  kt'  kp'  kh   k
 gg       kk  kk   ngn kt  ktt  ngn  ngm  kp  kpp  ks  kss  kk  kj    ktch  kch'  kk'  kt'  kp'  kh   kk
 gs       kk  kk   ngn kt  ktt  ngn  ngm  kb  kpp  ks  kss  ks  ktch  ktch  kch'  kk'  kt'  kp'  kh   k
-n        n'g n'gg nn  nd  ntt  ll   nm   nb  npp  ns  nss  n   nj    ntch  nch'  nk'  nt'  np'  nh   n
+n        n'g n'kk nn  nd  ntt  ll   nm   nb  npp  ns  nss  n   nj    ntch  nch'  nk'  nt'  np'  nh   n
 nj       nkk nkk  nn  ntt ntt  ll   nm   npp npp  nss nss  nj  ntch  ntch  nch'  nk'  nt'  np'  nch' nt
 nh       nk' nkk  nn  nt' ntt  ll   nm   np' npp  nss nss  nh  nch'  ntch  nch'  nk'  nt'  np'  nh   n
 d        tk  tkk  nn  tt  tt   nn   nm   tp  tpp  ss  ss   d   tch   tch   tch'  tk'  tt'  tp'  t'h  t
@@ -174,13 +174,13 @@ ls       ltk ltkk ll  ltt ltt  ll   lm   lpp lpp  lss lss  ls  ltch  ltch  lch' 
 lt       ltk ltkk ll  ltt ltt  ll   lm   lpp lpp  lss lss  lt  ltch  ltch  ltch' ltk' lt'  lp'  lt'  lt
 lp       lpg lpkk lmn lpd lptt lmn  lmm  lbb lbb  lps lpss lp' lpj   lptch lpch' lpk' lpt' lp'  lp'  lp'
 lh       lk' lkk  ll  lt' ltt  ll   lm   lp' lpp  ls  lss  lh  lch'  ltch  lch'  lk'  lt'  lp'  lh   l
-m        mg  mgg  mn  md  mdd  mn   mm   mb  mbb  ms  mss  m   mj    mch   mch'  mk'  mt'  mp'  mh   m
+m        mg  mkk  mn  md  mdd  mn   mm   mb  mbb  ms  mss  m   mj    mch   mch'  mk'  mt'  mp'  mh   m
 b        pk  pkk  mn  pt  ptt  mn   mm   pp  pp   ps  pss  b   pch   ptch  pch'  pk'  pt'  pp'  p'h  p
 bs       pkk pkk  mn  ptt ptt  mn   mm   pp  pp   pss pss  ps  ptch  ptch  ptch' pk'  pt'  pp'  pt'  p
 s        tk  tkk  nn  tt  tt   nn   nm   tp  tpp  ss  ss   s   tch   tch   tch'  tk'  tt'  tp'  t'h  t
 ss       tk  tkk  nn  tt  tt   nn   nm   tp  tpp  ss  ss   ss  tch   tch   tch'  tk'  tt'  tp'  t'h  t
-_        g   gg   n   d   dd   r    m    b   bb   s   ss   _   j     jj    ch'   k'   t'   p'   h    _
-ng       ngg ngg  ngn ngd ngdd ngn  ngm  ngb ngbb ngs ngss ng  ngj   ngjj  ngch' ngk' ngt' ngp' ngh  ng
+_        g   kk   n   d   dd   r    m    b   bb   s   ss   _   j     jj    ch'   k'   t'   p'   h    _
+ng       ngg nkk  ngn ngd ngdd ngn  ngm  ngb ngbb ngs ngss ng  ngj   ngjj  ngch' ngk' ngt' ngp' ngh  ng
 j        tk  tkk  nn  tt  tt   nn   nm   tp  tpp  ss  ss   j   tch   tch   tch'  tk'  tt'  tp'  ch'  t
 ch       tk  tkk  nn  tt  tt   nn   nm   tp  tpp  ss  ss   ch' tch   tch   tch'  tk'  tt'  tp'  ch'  t
 k        kk  kk   ngn kt  ktt  ngn  ngm  kp  kpp  ks  kss  k'  kch   ktch  kch'  kk'  kt'  kp'  k'h  k

@@ -113,6 +113,6 @@ class RomanizationTest < Test::Unit::TestCase
     given = "안녕하십니까"
     actual = Hangul.romanize(given, :mccune_reischauer)
 
-    assert_equal "annyŏnghashimnigga", actual
+    assert_equal "annyŏnghashimnikka", actual
   end
 end
