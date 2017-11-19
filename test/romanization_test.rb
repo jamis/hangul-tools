@@ -1,25 +1,25 @@
-require 'hangul'
+require 'hangul_tools'
 require 'test/unit'
 
 class RomanizationTest < Test::Unit::TestCase
   def test_decompose_with_vowels
     hangul = %w( 아 애 야 얘 어 에 여 예 오 와 왜 외 요 우 워 웨 위 유 으 의 이 )
     hangul.each.with_index do |given, idx|
-      assert_equal [[ 12, idx + 1, 0 ]], Hangul.decompose(given)
+      assert_equal [[ 12, idx + 1, 0 ]], HangulTools.decompose(given)
     end
   end
 
   def test_decompose_with_lead_consonants
     hangul = %w( 가 까 나 다 따 라 마 바 빠 사 싸 아 자 짜 차 카 타 파 하 )
     hangul.each.with_index do |given, idx|
-      assert_equal [[ idx + 1, 1, 0 ]], Hangul.decompose(given)
+      assert_equal [[ idx + 1, 1, 0 ]], HangulTools.decompose(given)
     end
   end
 
   def test_decompose_with_tail_consonants
     hangul = %w( 악 앆 앇 안 앉 않 앋 알 앍 앎 앏 앐 앑 앒 앓 암 압 앖 앗 았 앙 앚 앛 앜 앝 앞 앟 )
     hangul.each.with_index do |given, idx|
-      assert_equal [[ 12, 1, idx + 1 ]], Hangul.decompose(given)
+      assert_equal [[ 12, 1, idx + 1 ]], HangulTools.decompose(given)
     end
   end
 
@@ -29,7 +29,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = Hangul.romanize(given, :revised)
+        actual = HangulTools.romanize(given, :revised)
         assert_equal expect, actual
       end
     end
@@ -41,7 +41,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = Hangul.romanize(given, :revised)
+        actual = HangulTools.romanize(given, :revised)
         assert_equal expect, actual
       end
     end
@@ -53,7 +53,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = Hangul.romanize(given, :revised)
+        actual = HangulTools.romanize(given, :revised)
         assert_equal expect, actual
       end
     end
@@ -61,14 +61,14 @@ class RomanizationTest < Test::Unit::TestCase
 
   def test_revised_romanization_concatenation_of_consecutive_syllables
     given = "안녕하십니까"
-    actual = Hangul.romanize(given, :revised)
+    actual = HangulTools.romanize(given, :revised)
 
     assert_equal "annyeonghasimnikka", actual
   end
 
   def test_romanization_of_mixed_hangul_and_latin_romanizes_only_hangul
     given = 'I said, "안녕하십니까," and she said "누구세요?"'
-    actual = Hangul.romanize(given, :revised)
+    actual = HangulTools.romanize(given, :revised)
 
     assert_equal 'I said, "annyeonghasimnikka," and she said "nuguseyo?"', actual
   end
@@ -79,7 +79,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = Hangul.romanize(given, :mccune_reischauer)
+        actual = HangulTools.romanize(given, :mccune_reischauer)
         assert_equal expect, actual
       end
     end
@@ -91,7 +91,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = Hangul.romanize(given, :mccune_reischauer)
+        actual = HangulTools.romanize(given, :mccune_reischauer)
         assert_equal expect, actual
       end
     end
@@ -103,7 +103,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = Hangul.romanize(given, :mccune_reischauer)
+        actual = HangulTools.romanize(given, :mccune_reischauer)
         assert_equal expect, actual
       end
     end
@@ -111,7 +111,7 @@ class RomanizationTest < Test::Unit::TestCase
 
   def test_mccune_reischauer_romanization_concatenation_of_consecutive_syllables
     given = "안녕하십니까"
-    actual = Hangul.romanize(given, :mccune_reischauer)
+    actual = HangulTools.romanize(given, :mccune_reischauer)
 
     assert_equal "annyŏnghashimnikka", actual
   end

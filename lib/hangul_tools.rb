@@ -1,7 +1,7 @@
 # Courtesy of algorithms described at:
 # http://gernot-katzers-spice-pages.com/var/korean_hangul_unicode.html
 
-module Hangul
+module HangulTools
   def self.romanize(text, system=:revised)
     matrix = matrices[system]
     vowels = VOWELS[system]

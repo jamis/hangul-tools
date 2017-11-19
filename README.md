@@ -12,6 +12,8 @@ Supports the two primary systems for romanizing Hangul:
 Given a string containing Korean text (possibly intermingled with non-Korean characters):
 
 ```ruby
+require 'hangul_tools'
+
 s = 'I told him, "안녕하십니까."'
 
 puts Hangul.romanize(s, :revised)
