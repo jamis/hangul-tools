@@ -16,10 +16,10 @@ require 'hangul_tools'
 
 s = 'I told him, "안녕하십니까."'
 
-puts Hangul.romanize(s, :revised)
+puts Hangul.romanize(s, system: :revised)
 # => I told him, "annyeonghasimnikka."
 
-puts Hangul.romanize(s, :mccune_reischauer)
+puts Hangul.romanize(s, system: :mccune_reischauer)
 # => I told him, "annyŏnghashimnikka."
 ```
 

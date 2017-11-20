@@ -2,13 +2,13 @@
 # http://gernot-katzers-spice-pages.com/var/korean_hangul_unicode.html
 
 module HangulTools
-  def self.romanize(text, system=:revised)
+  def self.romanize(text, system: :revised, initial: :initial)
     matrix = matrices[system]
     vowels = VOWELS[system]
 
     text.scan(/[\uAC00-\uD7a3]+|[^\uAC00-\uD7a3]+/).map.with_index do |string, idx|
       if string =~ /[\uAC00-\uD7a3]/
-        romanize_with_system(string, system, idx > 0 ? :voiced : :initial)
+        romanize_with_system(string, system, idx > 0 ? :voiced : initial)
       else
         string
       end

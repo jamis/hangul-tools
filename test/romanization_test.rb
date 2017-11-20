@@ -29,7 +29,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = HangulTools.romanize(given, :revised)
+        actual = HangulTools.romanize(given, system: :revised)
         assert_equal expect, actual
       end
     end
@@ -41,7 +41,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = HangulTools.romanize(given, :revised)
+        actual = HangulTools.romanize(given, system: :revised)
         assert_equal expect, actual
       end
     end
@@ -53,7 +53,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = HangulTools.romanize(given, :revised)
+        actual = HangulTools.romanize(given, system: :revised)
         assert_equal expect, actual
       end
     end
@@ -61,14 +61,14 @@ class RomanizationTest < Test::Unit::TestCase
 
   def test_revised_romanization_concatenation_of_consecutive_syllables
     given = "안녕하십니까"
-    actual = HangulTools.romanize(given, :revised)
+    actual = HangulTools.romanize(given, system: :revised)
 
     assert_equal "annyeonghasimnikka", actual
   end
 
   def test_romanization_of_mixed_hangul_and_latin_romanizes_only_hangul
     given = 'I said, "안녕하십니까," and she said "누구세요?"'
-    actual = HangulTools.romanize(given, :revised)
+    actual = HangulTools.romanize(given, system: :revised)
 
     assert_equal 'I said, "annyeonghasimnikka," and she said "nuguseyo?"', actual
   end
@@ -79,7 +79,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = HangulTools.romanize(given, :mccune_reischauer)
+        actual = HangulTools.romanize(given, system: :mccune_reischauer)
         assert_equal expect, actual
       end
     end
@@ -91,7 +91,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = HangulTools.romanize(given, :mccune_reischauer)
+        actual = HangulTools.romanize(given, system: :mccune_reischauer)
         assert_equal expect, actual
       end
     end
@@ -103,7 +103,7 @@ class RomanizationTest < Test::Unit::TestCase
 
     hangul.zip(latin).each do |(given, expect)|
       assert_nothing_raised "given #{given.inspect} expect #{expect.inspect}" do
-        actual = HangulTools.romanize(given, :mccune_reischauer)
+        actual = HangulTools.romanize(given, system: :mccune_reischauer)
         assert_equal expect, actual
       end
     end
@@ -111,8 +111,15 @@ class RomanizationTest < Test::Unit::TestCase
 
   def test_mccune_reischauer_romanization_concatenation_of_consecutive_syllables
     given = "안녕하십니까"
-    actual = HangulTools.romanize(given, :mccune_reischauer)
+    actual = HangulTools.romanize(given, system: :mccune_reischauer)
 
     assert_equal "annyŏnghashimnikka", actual
+  end
+
+  def test_romanize_with_initial_voiced
+    given = "가자"
+    actual = HangulTools.romanize(given, system: :mccune_reischauer, initial: :voiced)
+
+    assert_equal "gaja", actual
   end
 end
