@@ -16,10 +16,10 @@ require 'hangul_tools'
 
 s = 'I told him, "안녕하십니까."'
 
-puts Hangul.romanize(s, :revised)
+puts HangulTools.romanize(s, :revised)
 # => I told him, "annyeonghasimnikka."
 
-puts Hangul.romanize(s, :mccune_reischauer)
+puts HangulTools.romanize(s, :mccune_reischauer)
 # => I told him, "annyŏnghashimnikka."
 ```
 
@@ -28,7 +28,7 @@ If you omit the system to use, it defaults to revised:
 ```ruby
 s = 'I told him, "안녕하십니까."'
 
-puts Hangul.romanize(s)
+puts HangulTools.romanize(s)
 # => I told him, "annyeonghasimnikka."
 ```
 
